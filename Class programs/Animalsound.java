@@ -49,7 +49,7 @@ class Cow extends Animal {
     }
 }
 
-class AnimalSound {
+class Animalsound {
     public static void main(String[] args) {
         Animal a1 = new Dog();
         a1.eat();

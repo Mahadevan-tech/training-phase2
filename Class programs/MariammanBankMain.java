@@ -256,7 +256,7 @@ class MariammanBank {
     {
         if(amount<=0)
         {
-            System.out.println("Invalid Amount");
+            System.out.println("Invalid deposit amount");
             return;
         }
         balance+=amount;
@@ -265,7 +265,10 @@ class MariammanBank {
     }
     public void withdraw(double amount)
     {
-        if(amount>balance)
+        if(amount<=0){
+            System.out.println("Invalid withdraw amount");
+        }
+        else if(amount>balance)
         {
             System.out.println("Insufficient Balance");
         }
@@ -276,11 +279,35 @@ class MariammanBank {
             System.out.println("Updated Balance : "+balance);
         }
     }
-    
+    public void displayAccountDetails(){
+        System.out.println("Bank Name : "+bankname);
+        System.out.println("Account Number : "+accountNumber);
+        System.out.println("AccountHolder Name : "+accountHolderName);
+        System.out.println("Mobile Number : "+mobileNumber);
+        System.out.println("Account Type : "+accountType);
+        System.out.println("Balance : "+balance);
+    }
+}
+    public class MariammanBankMain{
+        public static void main(String[] args) {
+            MariammanBank account1=new MariammanBank(1001,"Arun",9876543210L,"Savings",25000);
+            account1.displayAccountDetails();
+            System.out.println();
+            account1.deposit(5000);
+            System.out.println();           
+            account1.withdraw(10000);
+            System.out.println();
+            account1.setMobileNumber(9999999999L);
+            System.out.println("Updated Mobile Number : "+account1.getMobileNumber());
 
-    
-
-
-
-
+            MariammanBank account2=new MariammanBank(1002,"Varun",9876501234L,"Current",50000);
+            account2.displayAccountDetails();
+            System.out.println();
+            account2.deposit(10000);
+            System.out.println();
+            account2.withdraw(60000);
+            System.out.println();
+            account2.setMobileNumber(8888888888L);
+            System.out.println("Updated Mobile Number : "+account2.getMobileNumber());       
+        }
 }
